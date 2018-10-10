@@ -118,7 +118,6 @@ public class App {
                         .select(p -> p.getTitle()).toList());
         });
         return list;
-        // Não consigo retorna uma lista pois fica sugerindo pro método ser void
 
 
     }
