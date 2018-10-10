@@ -109,19 +109,15 @@ public class App {
     // 6. Retorne uma lista com os títulos de todos os posts publicados no blog com título tituloBlog 
     //entre o período dataInicial e dataFinal.
     public List<String> questaoSeis(Date dataInicial, Date dataFinal, String tituloBlog) {
-   
+            final List<String> list = new ArrayList<>();
          
          helper.execute(Post.class, streams
-                ->   streams
+                ->  { list.addAll(streams
                         .where(p -> p.getBlog().getName().equals(tituloBlog) &&
                                 p.getCreationDate().after(dataFinal) && p.getCreationDate().before(dataFinal))
-                        .select(p -> p.getTitle()).toList().stream().collect(Collectors.toList()).get(0)
-                
-                 
-                
-
-        );
-        return null;
+                        .select(p -> p.getTitle()).toList());
+        });
+        return list;
         // Não consigo retorna uma lista pois fica sugerindo pro método ser void
 
 
@@ -143,4 +139,3 @@ public class App {
 		});
                    }
 }  
-     
